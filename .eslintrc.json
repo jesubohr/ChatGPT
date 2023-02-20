@@ -1,5 +1,9 @@
 {
   "$schema": "http://json.schemastore.org/eslintrc",
+  "globals": {
+    "React": "readonly",
+    "JSX": "readonly"
+  },
   "extends": [
     "next/core-web-vitals",
     "./node_modules/standard/eslintrc.json"
