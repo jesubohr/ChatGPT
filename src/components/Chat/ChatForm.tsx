@@ -1,5 +1,6 @@
-import { SendIcon } from '../Icons'
 import { useMessagesStore } from '@/store/messages'
+import { setByScrollHeight } from './helpers'
+import { SendIcon } from '../Icons'
 
 export function ChatForm() {
   const { addMessage } = useMessagesStore()
@@ -13,13 +14,12 @@ export function ChatForm() {
     addMessage({ message })
 
     form.reset()
-    textarea.style.height = 'auto'
+    setByScrollHeight(textarea)
   }
 
   function handleChange (event: React.ChangeEvent<HTMLTextAreaElement>) {
     const textarea = event.currentTarget
-    textarea.style.height = 'auto'
-    textarea.style.height = `${textarea.scrollHeight}px`
+    setByScrollHeight(textarea)
   }
 
   return (
