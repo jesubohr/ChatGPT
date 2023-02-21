@@ -6,6 +6,7 @@ type State = {
   messages: Message[]
   error: string | null
   addMessage: ({ message }: { message: string }) => Promise<void>
+  updateMessage: ({ id, text }: { id: number, text: string }) => Promise<void>
 }
 
 export const useMessagesStore = create<State>((set, get) => ({
@@ -47,5 +48,15 @@ export const useMessagesStore = create<State>((set, get) => ({
       // Update the error state with the error message
       set(() => ({ error: error.message }))
     }
+  },
+  updateMessage: async ({ id, text }: { id: number, text: string }) => {
+    set((state: State) => ({
+      messages: state.messages.map((message: Message) => {
+        if (message.id === id) {
+          return { ...message, text }
+        }
+        return message
+      })
+    }))
   }
 }))
