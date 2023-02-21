@@ -1,0 +1,1 @@
+export { useTypingEffect } from './useTypingEffect'
