@@ -35,11 +35,7 @@ export function ChatView({ messages }: ChatViewProps) {
     >
       <section className='flex flex:col ai:center'>
         {messages.map(message => (
-          <MessageView
-            key={message.id}
-            isAI={message.ai}
-            message={message.text}
-          />
+          <MessageView key={message.id} {...message} />
         ))}
         <div className='w:full h:8rem h:12rem@sm flex-shrink:0' />
       </section>
